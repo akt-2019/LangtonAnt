@@ -7,8 +7,8 @@ namespace LangtonAnt
 {
     public enum TileColor
     {
-        Black,
-        White
+        Colored,
+        Uncolored
     }
 
     public class ColorTile : Tile

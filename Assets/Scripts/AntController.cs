@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 namespace LangtonAnt
 {
@@ -12,7 +13,11 @@ namespace LangtonAnt
         public ColorTile blackTile;
         public ColorTile whiteTile;
 
+        public Text StepCounter;
+
         private float elapsed;
+
+        private int step = 0;
 
         private void Update()
         {
@@ -21,6 +26,7 @@ namespace LangtonAnt
             elapsed += Time.deltaTime;
             if (elapsed >= stepInterval)
             {
+
                 Vector3Int tilePosition = new Vector3Int(
                     (int)(transform.position.x - 0.5f),
                     (int)(transform.position.y - 0.5f),
@@ -33,12 +39,12 @@ namespace LangtonAnt
                     return;
                 }
 
-                if (tile.Color == TileColor.Black)
+                if (tile.Color == TileColor.Colored)
                 {
                     Rotate(-1);
                     tilemap.SetTile(tilePosition, whiteTile);
                 }
-                else if (tile.Color == TileColor.White)
+                else if (tile.Color == TileColor.Uncolored)
                 {
                     Rotate(1);
                     tilemap.SetTile(tilePosition, blackTile);
@@ -49,6 +55,8 @@ namespace LangtonAnt
                 Move();
 
                 elapsed = 0;
+                step++;
+                StepCounter.text = $"Step : {step}";
             }
         }
 

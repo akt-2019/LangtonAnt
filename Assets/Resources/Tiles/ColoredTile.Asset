@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 425ef275d267fee448e732993af2de2f, type: 3}
-  m_Name: BlackTile
+  m_Name: ColoredTile
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 1cbda6774cdd0a04daa1ae6dceba94ec, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: fea7b5d6f0d668b4ca0ad58181a52b18, type: 3}
+  m_Color: {r: 0.1764706, g: 0.1764706, b: 0.1764706, a: 1}
   m_Transform:
     e00: 1
     e01: 0
