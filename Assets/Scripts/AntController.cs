@@ -9,15 +9,30 @@ namespace LangtonAnt
         public Tilemap tilemap;
         public float stepInterval;
         public Direction facingDirection;
+        public Sprite TileSprite;
 
-        public ColorTile blackTile;
-        public ColorTile whiteTile;
+        private ColorTile coloredTile;
+        private ColorTile uncoloredTile;
 
         public Text StepCounter;
 
         private float elapsed;
 
         private int step = 0;
+
+        private void Start()
+        {
+            coloredTile = new ColorTile();
+            coloredTile.sprite = TileSprite;
+            coloredTile.Color = TileColor.Colored;
+            coloredTile.color = new Color(255, 255, 255);
+
+
+            uncoloredTile = new ColorTile();
+            uncoloredTile.sprite = TileSprite;
+            uncoloredTile.Color = TileColor.Uncolored;
+            uncoloredTile.color = Random.ColorHSV();
+        }
 
         private void Update()
         {
@@ -42,12 +57,12 @@ namespace LangtonAnt
                 if (tile.Color == TileColor.Colored)
                 {
                     Rotate(-1);
-                    tilemap.SetTile(tilePosition, whiteTile);
+                    tilemap.SetTile(tilePosition, uncoloredTile);
                 }
                 else if (tile.Color == TileColor.Uncolored)
                 {
                     Rotate(1);
-                    tilemap.SetTile(tilePosition, blackTile);
+                    tilemap.SetTile(tilePosition, coloredTile);
                 }
 
                 tilemap.RefreshTile(tilePosition);
